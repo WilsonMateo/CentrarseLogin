@@ -86,7 +86,7 @@ export default function Login() {
         <img alt="" width="200px" height="80px" src={require('../img/centrarse.png')}/>
      
         <Typography component="h1" variant="h6" className={classes.in}>
-        Inicia Sesión
+        Iniciar Sesión
         </Typography>
           <Grid container className={classes.r2} >
             <Grid item xs={6} >
@@ -127,7 +127,7 @@ export default function Login() {
             <Grid item xs>
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
-                label="Recuérdame"
+                label="Recordar Contraseña"
               />
             </Grid>
             <Grid item>
@@ -138,7 +138,7 @@ export default function Login() {
               color="primary"
               className={classes.root}
             >
-                INICIAR SESION
+                Ingresar
             </Button>
             </Grid> 
           </Grid>
