@@ -2,13 +2,13 @@ import React from 'react';
 
 import './App.css';
 
-import Login from '../src/completo/loginFinal';
+
+import SignUp from './completo/Registro';
 
 function App() {
   return (
     <div >
-      <Login />
-
+      <SignUp />
     </div>
   );
 }
