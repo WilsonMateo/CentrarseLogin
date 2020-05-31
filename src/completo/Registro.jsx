@@ -88,8 +88,9 @@ export default function SignUp() {
   const classes = useStyles();
 
   const [values, setValues] = React.useState({
-    Confirmar: false,
+    showPassword2: false,
     password: '',
+    password2: '',
     showPassword: false,
   });
 
@@ -101,8 +102,8 @@ export default function SignUp() {
     setValues({ ...values, showPassword: !values.showPassword });
   };
   
-  const handleClickConfirmar = () => {
-    setValues({ ...values, Confirmar: !values.Confirmar });
+  const handleClickshowPassword2 = () => {
+    setValues({ ...values, showPassword2: !values.showPassword2 });
   };
 
   const handleMouseDownPassword = (event) => {
@@ -142,7 +143,7 @@ export default function SignUp() {
              <Divider   className={classes.divisor}  />
              </Grid>
              <Grid item xs={2}>
-             <p className={classes.divisor2}>O</p>
+             <p className={classes.divisor2}>o</p>
              </Grid>
              <Grid item xs={5}>
              <Divider   className={classes.divisor}  />
@@ -162,11 +163,11 @@ export default function SignUp() {
             <Grid item xs>
 
                 <TextField 
-                    id="Nombre de Usuario" 
-                    label="Nombre de Usuario" 
+                    id="Usuario" 
+                    label="Nombre de usuario" 
                     fullWidth
                     autoComplete="fname"
-                    name="Nombre de Usuario"
+                    name="Usuario"
                     required
                     autoFocus
                     variant="outlined"
@@ -197,13 +198,20 @@ export default function SignUp() {
             <Grid container  
                     spacing={1} 
                     alignItems="flex-end"
-                    className={classes.inputs}
-                    
+                    className={classes.inputs}     
             >
          
             <Grid item xs={6} sm={6}>
-                <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
-            <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                <FormControl 
+                    className={clsx
+                        (classes.margin, 
+                        classes.textField)}
+                    variant="outlined"
+                >
+            <InputLabel
+             htmlFor="outlined-adornment-password">
+                 Contraseña
+            </InputLabel>
             <OutlinedInput
                 id="outlined-adornment-password"
                 type={values.showPassword ? 'text' : 'password'}
@@ -217,31 +225,47 @@ export default function SignUp() {
                     onMouseDown={handleMouseDownPassword}
                     edge="end"
                     >
-                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                    {
+                        values.showPassword ?
+                        <Visibility /> : 
+                        <VisibilityOff />
+                    }
                     </IconButton>
                 </InputAdornment>
                 }
                 labelWidth={70}
             />
-            </FormControl>
+           </FormControl>
         </Grid>  
           <Grid  item xs={6} sm={6} >
-          <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
-            <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+          <FormControl
+            className={clsx(
+                classes.margin, 
+                classes.textField
+                )} 
+                variant="outlined"
+                >
+            <InputLabel 
+            htmlFor="outlined-adornment-password">
+                Contraseña
+            </InputLabel>
             <OutlinedInput
-                id="outlined-adornment-password"
-                type={values.Confirmar ? 'text' : 'password'}
-                value={values.password}
-                onChange={handleChange('password')}
+                id="outlined-adornment-password2"
+                type={values.showPassword2? 'text' : 'password2'}
+                value={values.password2}
+                onChange={handleChange('password2')}
                 endAdornment={
                 <InputAdornment position="end">
                     <IconButton
                     aria-label="toggle password visibility"
-                    onClick={handleClickConfirmar}
+                    onClick={handleClickshowPassword2}
                     onMouseDown={handleMouseDownPassword}
                     edge="end"
                     >
-                    {values.Confirmar ? <Visibility /> : <VisibilityOff />}
+                    {values.showPassword2? 
+                        <Visibility /> : 
+                        <VisibilityOff 
+                    />}
                     </IconButton>
                 </InputAdornment>
                 }
@@ -262,7 +286,7 @@ export default function SignUp() {
 
                 <TextField 
                     id="Telefono" 
-                    label="Numero de Telefono" 
+                    label="Número de teléfono" 
                     fullWidth
                     autoComplete="fname"
                     name="Telefono"
@@ -274,8 +298,10 @@ export default function SignUp() {
             </Grid>
             <Grid  xs className={classes.chek}>
               <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="¿Desea recibir notificaciones?"
+                control={<Checkbox 
+                    value="allowExtraEmails" 
+                    color="primary" />}
+                    label="¿Desea recibir notificaciones?"
               />
             </Grid>
           </Grid>
