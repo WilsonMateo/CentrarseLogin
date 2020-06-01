@@ -102,7 +102,7 @@ export default function SignUp() {
     setValues({ ...values, showPassword: !values.showPassword });
   };
   
-  const handleClickshowPassword2 = () => {
+  const handleClickShowPassword2 = () => {
     setValues({ ...values, showPassword2: !values.showPassword2 });
   };
 
@@ -110,7 +110,9 @@ export default function SignUp() {
     event.preventDefault();
   };
 
-
+  const handleMouseDownPassword2 = (event) => {
+    event.preventDefault();
+  };
   return (
     <Container component="main" maxWidth="xs">
         
@@ -202,76 +204,52 @@ export default function SignUp() {
             >
          
             <Grid item xs={6} sm={6}>
-                <FormControl 
-                    className={clsx
-                        (classes.margin, 
-                        classes.textField)}
-                    variant="outlined"
+            <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
+          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-password"
+            type={values.showPassword ? 'text' : 'password'}
+            value={values.password}
+            onChange={handleChange('password')}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
                 >
-            <InputLabel
-             htmlFor="outlined-adornment-password">
-                 Contraseña
-            </InputLabel>
-            <OutlinedInput
-                id="outlined-adornment-password"
-                type={values.showPassword ? 'text' : 'password'}
-                value={values.password}
-                onChange={handleChange('password')}
-                endAdornment={
-                <InputAdornment position="end">
-                    <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                    edge="end"
-                    >
-                    {
-                        values.showPassword ?
-                        <Visibility /> : 
-                        <VisibilityOff />
-                    }
-                    </IconButton>
-                </InputAdornment>
-                }
-                labelWidth={70}
-            />
-           </FormControl>
+                  {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            }
+            labelWidth={70}
+          />
+        </FormControl>
         </Grid>  
           <Grid  item xs={6} sm={6} >
-          <FormControl
-            className={clsx(
-                classes.margin, 
-                classes.textField
-                )} 
-                variant="outlined"
+          <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
+          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-password"
+            type={values.showPassword2 ? 'text' : 'password'}
+            value={values.password2}
+            onChange={handleChange('password2')}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword2}
+                  onMouseDown={handleMouseDownPassword2}
+                  edge="end"
                 >
-            <InputLabel 
-            htmlFor="outlined-adornment-password">
-                Contraseña
-            </InputLabel>
-            <OutlinedInput
-                id="outlined-adornment-password2"
-                type={values.showPassword2? 'text' : 'password2'}
-                value={values.password2}
-                onChange={handleChange('password2')}
-                endAdornment={
-                <InputAdornment position="end">
-                    <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickshowPassword2}
-                    onMouseDown={handleMouseDownPassword}
-                    edge="end"
-                    >
-                    {values.showPassword2? 
-                        <Visibility /> : 
-                        <VisibilityOff 
-                    />}
-                    </IconButton>
-                </InputAdornment>
-                }
-                labelWidth={70}
-            />
-            </FormControl>
+                  {values.showPassword2 ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            }
+            labelWidth={70}
+          />
+        </FormControl>
         </Grid> 
         </Grid>
             

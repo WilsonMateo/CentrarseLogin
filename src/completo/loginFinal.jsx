@@ -15,8 +15,9 @@ import Divider from '@material-ui/core/Divider';
 const useStyles = makeStyles((theme) => ({
 
   Redes: {
-    marginTop: theme.spacing(1),
+    marginTop: theme.spacing(3),
     borderRadius: '30px',
+    height:'90%'
    
   },
 
@@ -32,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
     width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
+    marginTop: theme.spacing(-1),
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
@@ -43,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
     borderColor: 'black',
     marginTop:'5%',
     borderRadius: '30px',
+    height:'90%'
   },
 
   pasword: {
@@ -71,8 +73,23 @@ const useStyles = makeStyles((theme) => ({
 
   r2: {
     marginTop:"3%"
- }
+ },
+ 
+ divisor: {
+  marginTop: theme.spacing(6),
+  textAlign:'center',
+    },
 
+divisor2: {
+  marginTop: theme.spacing(5),
+  textAlign:'center',
+    },
+
+Ingreso: {
+      marginTop: theme.spacing(3),
+      borderRadius: '30px',
+      height:'90%'
+    },
 }));
 
 export default function Login() {
@@ -100,6 +117,20 @@ export default function Login() {
           </Button>
             </Grid>
           </Grid>
+
+          <Grid container>
+             <Grid item xs={5}>
+             <Divider   className={classes.divisor}  />
+             </Grid>
+             <Grid item xs={2}>
+             <p className={classes.divisor2}>o</p>
+             </Grid>
+             <Grid item xs={5}>
+             <Divider   className={classes.divisor}  />
+             </Grid>
+         </Grid>
+          
+
         <form className={classes.form} noValidate>
           <TextField
             variant="outlined"
@@ -158,9 +189,21 @@ export default function Login() {
               ¿No tienes una cuenta?
               </Link>
             </Grid>
-          <Button href="#"  variant="outlined" className={classes.chip}  fullWidth  disableElevation >
-          Registrarse
+            <Grid container>
+              <Grid item xs={12}>
+          <Button
+            size="medium"
+            type="submit"
+            fullWidth
+            variant="outlined"
+            color="primary"
+            className={classes.Ingreso}
+          >
+            Registrarte
           </Button>
+          </Grid>
+          </Grid>
+        
         </form>
       </div>
     </Container>
