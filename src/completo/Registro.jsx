@@ -18,6 +18,7 @@ import clsx from 'clsx';
 import FormControl from '@material-ui/core/FormControl';
 import Divider from '@material-ui/core/Divider';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
+import PhoneInput from 'react-phone-number-input'
 
 const useStyles = makeStyles((theme) => ({
 divisor: {
@@ -40,13 +41,13 @@ divisor: {
   },
   form: {
     width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(-2),
+    marginTop: theme.spacing(1),
   },
   submit: {
     marginTop: theme.spacing(3),
     
     borderRadius: '30px',
-    height:'150%'
+    height:'70%'
   },
 
   title:{
@@ -70,7 +71,7 @@ divisor: {
     height:'90%'
   },
   link:{
-    marginTop: theme.spacing(4),
+    marginTop: theme.spacing(2),
   },
 
   chek:{
@@ -80,8 +81,11 @@ divisor: {
 
   inputs:{
     marginTop: theme.spacing(3),
-  }
- 
+  },
+    phone:{
+      width:'50%',
+      height:'30%'
+    }
 }));
 
 export default function SignUp() {
@@ -153,158 +157,133 @@ export default function SignUp() {
          </Grid>
           
 
-        <form className={classes.form} noValidate>
-          <Grid container spacing={2}>
-          
-            <Grid container  
-                    spacing={1} 
-                    alignItems="flex-end"
-                    className={classes.inputs}
-            >
-           
-            <Grid item xs>
-
-                <TextField 
-                    id="Usuario" 
-                    label="Nombre de usuario" 
-                    fullWidth
-                    autoComplete="fname"
-                    name="Usuario"
-                    required
-                    autoFocus
-                    variant="outlined"
+         <form className={classes.form} >
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  autoComplete="fname"
+                  name="username"
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="username"
+                  label="Usuario"
+                  
+                  autoFocus
                 />
-            </Grid>
-            </Grid>
-            <Grid container  
-                    spacing={1} 
-                    alignItems="flex-end"
-                    className={classes.inputs}
-            >
-         
-            <Grid item xs >
+              </Grid>
 
-                <TextField 
-                    id="Correo" 
-                    label="Correo" 
-                    fullWidth
-                    autoComplete="fname"
-                    name="Correo"
-                    required
-                    autoFocus
-                    variant="outlined"
+              
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="email"
+                  label="Correo electrónico"
+                  name="email"
+                  autoComplete="email"
+                  onChange={handleChange}
+
                 />
-            </Grid>
-            </Grid>
+              </Grid>
 
-            <Grid container  
-                    spacing={1} 
-                    alignItems="flex-end"
-                    className={classes.inputs}     
-            >
-         
-            <Grid item xs={6} sm={6}>
-            <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-          <OutlinedInput
-            id="outlined-adornment-password"
-            type={values.showPassword ? 'text' : 'password'}
-            value={values.password}
-            onChange={handleChange('password')}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                >
-                  {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                </IconButton>
-              </InputAdornment>
-            }
-            labelWidth={70}
-          />
-        </FormControl>
-        </Grid>  
-          <Grid  item xs={6} sm={6} >
-          <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-          <OutlinedInput
-            id="outlined-adornment-password"
-            type={values.showPassword2 ? 'text' : 'password'}
-            value={values.password2}
-            onChange={handleChange('password2')}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword2}
-                  onMouseDown={handleMouseDownPassword2}
-                  edge="end"
-                >
-                  {values.showPassword2 ? <Visibility /> : <VisibilityOff />}
-                </IconButton>
-              </InputAdornment>
-            }
-            labelWidth={70}
-          />
-        </FormControl>
-        </Grid> 
-        </Grid>
-            
-            
-        <Grid container  
-                    spacing={1} 
-                    alignItems="flex-end"
-                    className={classes.inputs}
-            >
-         
-            <Grid item xs >
-
-                <TextField 
-                    id="Telefono" 
-                    label="Número de teléfono" 
-                    fullWidth
-                    autoComplete="fname"
-                    name="Telefono"
-                    required
-                    autoFocus
-                    variant="outlined"
+              <Grid item xs={12} sm={6}>
+              <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
+              <InputLabel htmlFor="outlined-adornment-password">Contraseña</InputLabel>
+                <OutlinedInput
+                   required
+                   fullWidth
+                  id="outlined-adornment-password"
+                  type={values.showPassword ? 'text' : 'password'}
+                  value={values.password}
+                  onChange={handleChange('password')}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        edge="end"
+                      >
+                        {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                  labelWidth={100}
                 />
+              </FormControl>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+              <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
+              <InputLabel htmlFor="outlined-adornment-password">Confirmar Contraseña</InputLabel>
+                <OutlinedInput
+                  required
+                  fullWidth
+                  id="outlined-adornment-password"
+                  type={values.showPassword2 ? 'text' : 'password'}
+                  value={values.password2}
+                  onChange={handleChange('password2')}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword2}
+                        onMouseDown={handleMouseDownPassword2}
+                        edge="end"
+                      >
+                        {values.showPassword2 ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                  labelWidth={175}
+                />
+
+              </FormControl>
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="phone_number"
+                  label="Número de teléfono"
+                  name="phone_number"
+                  autoComplete="phone_number"
+                  onChange={handleChange}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <FormControlLabel
+                  control={<Checkbox value="allowExtraEmails" color="primary" />}
+                  label="Recibir notificaciones"
+                />
+              </Grid>
             </Grid>
-            </Grid>
-            <Grid  xs className={classes.chek}>
-              <FormControlLabel
-                control={<Checkbox 
-                    value="allowExtraEmails" 
-                    color="primary" />}
-                    label="¿Desea recibir notificaciones?"
-              />
-            </Grid>
-          </Grid>
-          <Grid container>
+            <Grid container>
               <Grid item xs={12}>
           <Button
-            size="medium"
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.Ingreso}
+             type="submit"
+             fullWidth
+             variant="contained"
+             color="primary"
+             className={classes.submit}
           >
             Registrarte
           </Button>
           </Grid>
           </Grid>
-          <Grid container justify="flex-end"  className={classes.link}>
-            <Grid item>
-              <Link href="#" variant="body2">
-                ¿Ya tienes cuenta? Inicia sesión
+            <Grid
+              container
+              justify="flex-end"
+            >
+              <Grid item className={classes.link}>
+                <Link to="/signin" variant="body2">
+                  Already have an account? Sign in
               </Link>
+              </Grid>
             </Grid>
-          </Grid>
-        </form>
+          </form>
       </div>
     </Container>
     
